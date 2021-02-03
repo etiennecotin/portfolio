@@ -35,7 +35,7 @@ header {
   position: fixed;
   width: 100%;
   margin-top: 2%;
-  z-index: 10;
+  z-index: 500;
   h1 {
     font-size: 2em;
     font-weight: 200;
