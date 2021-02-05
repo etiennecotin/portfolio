@@ -19,10 +19,19 @@
 <script>
 export default {
   name: 'Logo',
-  data() {
-    return {
-      opacity: 0.11,
-    }
+  props: {
+    lighting: {
+      default: null,
+      type: Number,
+    },
+  },
+  computed: {
+    opacity() {
+      if (this.lighting > 40) {
+        return (0.21 * this.lighting) / Math.cos(Math.sign(this.lighting)) / 100
+      }
+      return 0.11
+    },
   },
 }
 </script>

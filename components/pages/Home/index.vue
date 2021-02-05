@@ -3,7 +3,7 @@
     <interactiveLogo />
     <div class="full-height">
       <interactiveTitle />
-      <MusicPlayer />
+      <MusicPlayer :music-data="homeData.music" />
       <next-section to="#business" class="next-section" animate />
     </div>
     <section id="business">
@@ -85,7 +85,7 @@ section {
   .process {
     margin-top: 10%;
     .vision {
-      width: 20%;
+      width: 22%;
       margin-right: 6%;
       &:nth-child(2) {
         margin-top: 6%;

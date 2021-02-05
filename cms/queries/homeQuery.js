@@ -8,16 +8,24 @@ export default `query homePage {
       tag
     }
     entityTitle
-    description
-    myUnivers
     interactiveTitle {
       name(markdown: true)
       id
     }
+    music {
+      url
+      filename
+      format
+      alt
+      basename
+      title
+    }
+    description
     vision {
       title
       content
     }
+    myUnivers
   }
 }
 `

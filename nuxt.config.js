@@ -21,13 +21,13 @@ export default {
     datoToken: process.env.DATO_TOKEN,
     isDevEnv,
     isProdEnv,
-    netlifyEnv: process.env.NETLIFY_ENV
+    netlifyEnv: process.env.NETLIFY_ENV,
   },
   publicRuntimeConfig: {
-    datoToken: process.env.DATO_TOKEN
+    datoToken: process.env.DATO_TOKEN,
   },
   privateRuntimeConfig: {
-    datoToken: process.env.DATO_TOKEN
+    datoToken: process.env.DATO_TOKEN,
   },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -92,5 +92,15 @@ export default {
   content: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]',
+        },
+      })
+    },
+  },
 }
