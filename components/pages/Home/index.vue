@@ -4,7 +4,24 @@
     <div class="full-height">
       <interactiveTitle />
       <MusicPlayer :music-data="homeData.music" />
-      <next-section to="#business" class="next-section" animate />
+      <!--      <p>-->
+      <!--        <input-->
+      <!--          v-model="vol"-->
+      <!--          type="range"-->
+      <!--          min="0"-->
+      <!--          max="100"-->
+      <!--          value="50"-->
+      <!--          :onchange="changeVolume()"-->
+      <!--        />-->
+      <!--        Volume-->
+      <!--      </p>-->
+      <next-section
+        to="business"
+        class="next-section"
+        :title="$t('section.principal.view-more')"
+        internal
+        animate
+      />
     </div>
     <section id="business">
       <div class="introduction">
@@ -22,11 +39,13 @@
       </div>
     </section>
     <section class="projects">
-      <sectionTitle title="Project overview" sub-title="View all" />
+      <sectionTitle
+        :title="$t('section.project.title')"
+        :sub-title="$t('section.project.sub-title')"
+      />
     </section>
-    <section class="univers">
-      <sectionTitle title="My univers" />
-    </section>
+    <MyUniversSection :my-univers="homeData.myUnivers" />
+    <here-i-am-section :data="homeData.hereIAmBackground" />
   </div>
 </template>
 
@@ -35,7 +54,10 @@ import interactiveLogo from '@/components/pages/Home/interactiveLogo'
 import interactiveTitle from '@/components/pages/Home/interactiveTitle'
 import MusicPlayer from '@/components/pages/Home/MusicPlayer'
 import sectionTitle from '@/components/pages/Home/sectionTitle'
+import MyUniversSection from '@/components/pages/Home/MyUniversSection'
+import HereIAmSection from '@/components/pages/Home/HereIAmSection'
 import nextSection from '@/components/generic/nextSection'
+
 export default {
   name: 'Home',
   components: {
@@ -44,6 +66,8 @@ export default {
     MusicPlayer,
     nextSection,
     sectionTitle,
+    MyUniversSection,
+    HereIAmSection,
   },
   props: {
     datoData: {
@@ -51,9 +75,19 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      vol: 50,
+    }
+  },
   computed: {
     homeData() {
       return this.datoData.home
+    },
+  },
+  methods: {
+    changeVolume() {
+      this.$store.commit('musicPlayer/changeVol', this.vol)
     },
   },
 }
@@ -79,19 +113,19 @@ section {
     display: flex;
     justify-content: center;
     &-content {
-      width: 25%;
+      width: 30%;
     }
   }
   .process {
     margin-top: 10%;
     .vision {
       width: 22%;
-      margin-right: 6%;
+      margin-right: 3%;
+      margin-left: 3%;
       &:nth-child(2) {
         margin-top: 6%;
       }
       &:last-child {
-        margin-right: 0;
         margin-top: 12%;
       }
       .title {

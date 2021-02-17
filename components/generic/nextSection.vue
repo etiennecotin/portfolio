@@ -1,6 +1,16 @@
 <template>
   <div class="goToBtn">
-    <a :href="to">
+    <div v-if="internal" class="link" @click="scrollTo">
+      <ArrowRightIcon class="arrow-icon" :class="{ animate: animate }" />
+      <span>{{ title }}</span>
+    </div>
+    <a
+      v-else
+      :href="to"
+      class="link"
+      target="_blank"
+      rel="nofollow noreferrer noopener"
+    >
       <ArrowRightIcon class="arrow-icon" :class="{ animate: animate }" />
       <span>{{ title }}</span>
     </a>
@@ -23,9 +33,18 @@ export default {
       type: String,
       default: 'Discover me',
     },
+    internal: {
+      type: Boolean,
+      default: false,
+    },
     animate: {
       type: Boolean,
       default: false,
+    },
+  },
+  methods: {
+    scrollTo() {
+      document.getElementById(this.to).scrollIntoView(true)
     },
   },
 }
@@ -35,7 +54,10 @@ export default {
   display: block;
   &:hover {
     cursor: pointer;
-    a {
+    .link {
+      span {
+        color: $blue;
+      }
       .arrow-icon {
         &.animate {
           animation: 0.2s ease;
@@ -44,11 +66,12 @@ export default {
       }
     }
   }
-  a {
+  .link {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.3s;
     .arrow-icon {
       width: 50px;
       transition: transform 0.2s;
