@@ -4,7 +4,7 @@
     <div class="content d-flex justify-content-center">
       <musicIcon />
       <div class="description-links col-4">
-        <p class="texte" :v-html="myUnivers"></p>
+        <div class="texte" v-html="myUnivers"></div>
         <div class="links">
           <nextSection
             :to="spotifyUrl"

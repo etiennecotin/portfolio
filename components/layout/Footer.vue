@@ -1,18 +1,19 @@
 <template>
   <footer>
     <div>
-      <div class="contact">
-        <h3 class="before-form">{{ $t('footer.contact.label') }}</h3>
-        <div class="infos">
-          <p>etienne.cotin@gmail.com | +33 6 20 31 86 60</p>
-          <p class="separator">or</p>
+      <h3 class="before-form">{{ $t('footer.contact.label') }}</h3>
+      <div class="contact row d-flex">
+        <div class="infos col-3">
+          <p>+33 6 20 31 86 60</p>
+          <p>etienne.cotin@gmail.com</p>
         </div>
-        <div class="contact-form">
+        <p class="separator"></p>
+        <div class="contact-form col-3">
           <label>
             <input
+              v-model="emailAddress"
               type="email"
               :placeholder="$t('footer.contact.input-placeholder')"
-              v-model="emailAddress"
             />
           </label>
           <button type="submit">{{ $t('footer.contact.submit') }}</button>
@@ -65,27 +66,39 @@ footer {
   padding: 0 15%;
   font-size: 0.9em;
   font-weight: 200;
+  .before-form {
+    font-family: $serif-font-family;
+    font-size: 3em;
+    font-weight: 400;
+    margin: 3% 0 4%;
+    color: $yellow;
+    text-align: center;
+  }
   .contact {
     display: flex;
     justify-content: center;
-    margin: 1% 0 6%;
-    flex-direction: column;
+    margin-bottom: 5%;
+    //flex-direction: column;
     align-items: center;
-    .before-form {
-      font-family: $serif-font-family;
-      font-size: 3em;
-      font-weight: 400;
-      margin: 4% 0 1%;
-      color: $yellow;
-    }
     .infos {
-      font-size: 1.5em;
+      font-size: 1.3em;
       margin: 1% 0;
-      text-align: center;
+      text-align: left;
+      font-weight: 300;
+      p {
+        margin: 5% 0;
+      }
+    }
+    .separator {
+      border-right: 1px solid white;
+      height: 120px;
+      margin: 0 2%;
+      width: 1px;
+      padding: 0;
     }
     &-form {
       display: flex;
-      width: 30%;
+      //width: 30%;
       label {
         margin-right: 2%;
         width: 100%;
