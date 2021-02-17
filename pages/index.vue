@@ -14,11 +14,11 @@ export default {
   components: {
     Home,
   },
-  async asyncData() {
-    const datoData = await request({
-      query: homeQuery,
-    })
-    const siteQuery = await request({ query: _siteQuery })
+  async asyncData({ app, error, route, store }) {
+    const datoData = await request({ app, store, query: homeQuery })
+    const siteQuery = await request({ app, store, query: _siteQuery })
+    if (!siteQuery) return error({ statusCode: 404 })
+
     return { datoData, siteQuery }
   },
   head() {
