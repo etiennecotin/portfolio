@@ -1,0 +1,41 @@
+{
+  "header": {
+    "labels": {
+      "homeLink": "Lien vers l'accueil de Irys Photographie"
+    }
+  },
+  "footer": {
+    "introduction": "Introduction",
+    "contact": {
+      "label_old": "Let's not lose touch",
+      "label": "How to connect ?",
+      "input-placeholder": "Email address",
+      "submit": "GO"
+    }
+  },
+  "section": {
+    "principal": {
+      "view-more": "Discover me",
+      "player-title": "Explore in music"
+    },
+    "project": {
+      "title": "Project overview",
+      "sub-title": "View all"
+    },
+    "my-univers": {
+      "title": "My univers",
+      "links": {
+        "spotify-link": "Hear what i like",
+        "instagram-link": "Dourito festival"
+      }
+    },
+    "here-i-am": {
+      "title": "Here i am",
+      "content": {
+        "first": "Got a project?",
+        "seconde": "Let’s build something together."
+      },
+      "call-to-action": "Say hi \uD83D\uDC4B"
+    }
+  }
+}

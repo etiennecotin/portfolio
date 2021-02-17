@@ -3,6 +3,10 @@
 
 import dotenv from 'dotenv'
 
+import frTranslation from './locales/fr/common.json'
+import enTranslation from './locales/en/common.json'
+import { defaultLocale, locales } from './config/i18n'
+
 dotenv.config()
 
 const netlifyEnv = process.env.NODE_ENV
@@ -74,6 +78,29 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
     '@nuxtjs/style-resources',
+    [
+      'nuxt-i18n',
+      {
+        locales,
+        strategy: 'prefix_except_default',
+        defaultLocale,
+        routesNameSeparator: '-',
+        parsePages: false, // Disable acorn parsing
+        // pages: getPagesList(isProdEnv),
+        vueI18n: {
+          fallbackLocale: defaultLocale,
+          messages: {
+            fr: frTranslation || {},
+            en: enTranslation || {},
+          },
+        },
+        vuex: {
+          syncLocale: true,
+          syncMessages: true,
+          syncRouteParams: true,
+        },
+      },
+    ],
   ],
 
   fontLoader: {

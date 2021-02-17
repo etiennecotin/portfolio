@@ -1,6 +1,6 @@
 import seoFields from '~/cms/fields/seoFields'
-export default `query homePage {
-  home {
+export default `query homePage($lang: SiteLocale) {
+  home(locale: $lang) {
     ${seoFields}
     _seoMetaTags {
       attributes
@@ -25,7 +25,24 @@ export default `query homePage {
       title
       content
     }
-    myUnivers
+    myUnivers(markdown: true)
+    hereIAmBackground {
+      responsiveImage {
+        webpSrcSet
+        title
+        srcSet
+        src
+        sizes
+        height
+        alt
+        width
+        base64
+        aspectRatio
+        sizes
+      }
+      title
+    }
+    callToAction
   }
 }
 `

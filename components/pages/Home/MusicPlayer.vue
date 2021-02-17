@@ -5,7 +5,7 @@
       <stopSoundIcon v-if="isPlaying" class="music-player-icon rotating" />
     </transition>
     <transition name="fade" mode="out-in">
-      <span v-if="!isPlaying">Explore in music</span>
+      <span v-if="!isPlaying">{{ $t('section.principal.player-title') }}</span>
       <span v-if="isPlaying">{{ musicData.title }}</span>
     </transition>
   </div>
@@ -46,19 +46,12 @@ export default {
       return this.$store.state.musicPlayer.isLoaded
     },
   },
-  watch: {
-    isPlaying(actual) {
-      if (actual) {
-        this.dessiner()
-        console.log(this.analyser)
-      }
-    },
-  },
   mounted() {
     this.ctx = new (window.AudioContext || window.webkitAudioContext)()
     this.$store.commit('musicPlayer/setCtxAudio', this.ctx)
     this.$store.commit('musicPlayer/setMusicData', this.musicData)
     this.$store.dispatch('musicPlayer/loadSound', this.musicData.url)
+    // this.$store.commit('musicPlayer/setSource', this.musicData.url)
   },
   methods: {
     toggleMusic() {
@@ -66,48 +59,6 @@ export default {
         this.$store.dispatch('musicPlayer/toggleMusic')
         // this.dessiner()
       }
-    },
-    dessiner() {
-      // const canvas = document.getElementById('oscilloscope')
-      // const contexteCanvas = canvas.getContext('2d')
-
-      const freqDomain = new Uint8Array(this.analyser.frequencyBinCount)
-      // console.log(freqDomain, this.analyser.frequencyBinCount)
-      this.analyser.getByteFrequencyData(freqDomain)
-      this.analyser.fftSize = 256
-      const bufferLength = this.analyser.frequencyBinCount
-      // const WIDTH = 400
-      // const HEIGHT = 200
-      // const barWidth = (WIDTH / bufferLength) * 2.5
-      // let barHeight
-      // let x = 0
-
-      const renderFrame = () => {
-        requestAnimationFrame(renderFrame)
-        this.analyser.getByteFrequencyData(freqDomain)
-        let rms = 0
-        for (let i = 0; i < bufferLength; i++) {
-          rms += freqDomain[i] * freqDomain[i]
-        }
-        rms /= bufferLength
-        this.rms = Math.sqrt(rms)
-
-        // x = 0
-        // this.analyser.getByteFrequencyData(freqDomain)
-        // contexteCanvas.fillStyle = '#000'
-        // contexteCanvas.fillRect(0, 0, WIDTH, HEIGHT)
-        // for (let i = 0; i < bufferLength; i++) {
-        //   barHeight = freqDomain[i]
-        //
-        //   const r = barHeight + 25 * (i / bufferLength)
-        //   const g = 250 * (i / bufferLength)
-        //   const b = 50
-        //   contexteCanvas.fillStyle = 'rgb(' + r + ',' + g + ',' + b + ')'
-        //   contexteCanvas.fillRect(x, HEIGHT - barHeight, barWidth, barHeight)
-        //   x += barWidth + 1
-        // }
-      }
-      renderFrame()
     },
   },
 }
