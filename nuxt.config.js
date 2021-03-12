@@ -85,7 +85,7 @@ export default {
         strategy: 'prefix_except_default',
         defaultLocale,
         routesNameSeparator: '-',
-        parsePages: false, // Disable acorn parsing
+        // parsePages: false, // Disable acorn parsing
         // pages: getPagesList(isProdEnv),
         vueI18n: {
           fallbackLocale: defaultLocale,

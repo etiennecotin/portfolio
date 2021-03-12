@@ -6,7 +6,12 @@
     <div
       class="col-4 d-flex justify-content-end align-self-center social-links"
     >
-      <a v-for="link in social" :key="link.type" :href="link.url">
+      <a
+        v-for="link in social"
+        :key="link.type"
+        :href="link.url"
+        target="_blank"
+      >
         <display-icon icon="LinkedinIcon"></display-icon>
       </a>
     </div>

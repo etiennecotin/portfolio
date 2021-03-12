@@ -6,8 +6,8 @@
       <div class="filtre"></div>
       <div class="call-to-action">
         <div class="content">
-          <h3>Got a project?</h3>
-          <h3>Let’s build something together.</h3>
+          <h3>{{ $t('section.here-i-am.content.first') }}</h3>
+          <h3>{{ $t('section.here-i-am.content.seconde') }}</h3>
         </div>
         <button>
           <ArrowRightIcon class="icon" />

@@ -32,7 +32,6 @@ export default {
   watch: {
     isPlaying(actual) {
       if (actual) {
-        console.log(this.analyser)
         this.animate()
       }
     },

@@ -22,7 +22,7 @@
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
     "nuxt": "^2.14.6",
-    "nuxt-i18n": "^6.16.0",
+    "nuxt-i18n": "^6.20.3",
     "vue-datocms": "^0.1.3"
   },
   "devDependencies": {

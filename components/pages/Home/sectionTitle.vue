@@ -2,10 +2,25 @@
   <div class="section-title">
     <h2>{{ title }}</h2>
     <nextSection
-      v-if="subTitle"
-      to="#business"
+      v-if="subTitle && type === 'scrollTo'"
+      :to="to"
       :title="subTitle"
       class="subtitle"
+      scroll-to
+    />
+    <nextSection
+      v-if="subTitle && type === 'external'"
+      :to="to"
+      :title="subTitle"
+      class="subtitle"
+      external
+    />
+    <nextSection
+      v-if="subTitle && type === 'internal'"
+      :to="to"
+      :title="subTitle"
+      class="subtitle"
+      internal
     />
   </div>
 </template>
@@ -25,6 +40,14 @@ export default {
     subTitle: {
       type: String,
       default: null,
+    },
+    to: {
+      type: String,
+      default: '#',
+    },
+    type: {
+      type: String,
+      default: '',
     },
   },
 }

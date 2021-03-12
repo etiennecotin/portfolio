@@ -19,7 +19,7 @@
         to="business"
         class="next-section"
         :title="$t('section.principal.view-more')"
-        internal
+        scrollTo
         animate
       />
     </div>
@@ -38,12 +38,7 @@
         </div>
       </div>
     </section>
-    <section class="projects">
-      <sectionTitle
-        :title="$t('section.project.title')"
-        :sub-title="$t('section.project.sub-title')"
-      />
-    </section>
+    <ProjectsSection :projects="datoData.allWebProjects"></ProjectsSection>
     <MyUniversSection :my-univers="homeData.myUnivers" />
     <here-i-am-section :data="homeData.hereIAmBackground" />
   </div>
@@ -53,10 +48,10 @@
 import interactiveLogo from '@/components/pages/Home/interactiveLogo'
 import interactiveTitle from '@/components/pages/Home/interactiveTitle'
 import MusicPlayer from '@/components/pages/Home/MusicPlayer'
-import sectionTitle from '@/components/pages/Home/sectionTitle'
 import MyUniversSection from '@/components/pages/Home/MyUniversSection'
 import HereIAmSection from '@/components/pages/Home/HereIAmSection'
 import nextSection from '@/components/generic/nextSection'
+import ProjectsSection from '~/components/pages/Home/ProjectsSection'
 
 export default {
   name: 'Home',
@@ -65,9 +60,9 @@ export default {
     interactiveTitle,
     MusicPlayer,
     nextSection,
-    sectionTitle,
     MyUniversSection,
     HereIAmSection,
+    ProjectsSection,
   },
   props: {
     datoData: {

@@ -70,18 +70,18 @@ footer {
     font-family: $serif-font-family;
     font-size: 3em;
     font-weight: 400;
-    margin: 3% 0 4%;
+    margin: 5% 0 6%;
     color: $yellow;
     text-align: center;
   }
   .contact {
     display: flex;
     justify-content: center;
-    margin-bottom: 5%;
+    margin-bottom: 6%;
     //flex-direction: column;
     align-items: center;
     .infos {
-      font-size: 1.3em;
+      font-size: 1.2em;
       margin: 1% 0;
       text-align: left;
       font-weight: 300;

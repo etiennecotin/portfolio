@@ -9,7 +9,7 @@
     "contact": {
       "label": "Ne perdons pas le contact",
       "input-placeholder": "Adresse email",
-      "submit": "Envoyer"
+      "submit": "GO"
     }
   },
   "section": {
@@ -30,6 +30,10 @@
     },
     "here-i-am": {
       "title": "Me voici",
+      "content": {
+        "first": "Vous avez un projet?",
+        "seconde": "Construisons quelque chose ensemble."
+      },
       "call-to-action": "Travailler avec moi"
     }
   }

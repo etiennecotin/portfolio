@@ -1,11 +1,11 @@
 <template>
   <div class="goToBtn">
-    <div v-if="internal" class="link" @click="scrollTo">
+    <div v-if="scrollTo" class="link" @click="scrollToDiv">
       <ArrowRightIcon class="arrow-icon" :class="{ animate: animate }" />
       <span>{{ title }}</span>
     </div>
     <a
-      v-else
+      v-if="external"
       :href="to"
       class="link"
       target="_blank"
@@ -14,6 +14,10 @@
       <ArrowRightIcon class="arrow-icon" :class="{ animate: animate }" />
       <span>{{ title }}</span>
     </a>
+    <nuxt-link v-if="internal" :to="{ name: to }" class="link">
+      <ArrowRightIcon class="arrow-icon" :class="{ animate: animate }" />
+      <span>{{ title }}</span>
+    </nuxt-link>
   </div>
 </template>
 
@@ -37,13 +41,21 @@ export default {
       type: Boolean,
       default: false,
     },
+    external: {
+      type: Boolean,
+      default: false,
+    },
+    scrollTo: {
+      type: Boolean,
+      default: false,
+    },
     animate: {
       type: Boolean,
       default: false,
     },
   },
   methods: {
-    scrollTo() {
+    scrollToDiv() {
       document.getElementById(this.to).scrollIntoView(true)
     },
   },
@@ -59,8 +71,12 @@ export default {
         color: $blue;
       }
       .arrow-icon {
+        animation: 0;
+        -webkit-animation: 0;
         &.animate {
-          animation: 0.2s ease;
+          animation: 0;
+          -webkit-animation: 0;
+          transform: translateX(8px);
         }
         transform: translateX(8px);
       }
@@ -77,6 +93,8 @@ export default {
       transition: transform 0.2s;
       transition-timing-function: ease;
       &.animate {
+        transition: transform 0.2s;
+        transition-timing-function: ease;
         animation: 8s ease infinite bounce;
       }
     }
