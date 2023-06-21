@@ -21,7 +21,7 @@
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
     "graphql-request": "^3.4.0",
-    "nuxt": "^2.14.6",
+    "nuxt": "^3.4.3",
     "nuxt-i18n": "^6.20.3",
     "vue-datocms": "^0.1.3"
   },
